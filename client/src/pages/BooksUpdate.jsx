@@ -44,11 +44,14 @@ class BooksUpdate extends Component{
             authorName: book.data.data.authorName
         })
     }
-    handleChangeInputAuthorName = event => {
-        this.setState({name: event.target.value});
-    }
-    handleChangeInputName = event => {
-        this.setState({authorName: event.target.value});
+    // handleChangeInputAuthorName = event => {
+    //     this.setState({name: event.target.value});
+    // }
+    // handleChangeInputName = event => {
+    //     this.setState({authorName: event.target.value});
+    // }
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value})
     }
     handleIncludeBook = async event => {
         const { id, name, authorName } = this.state
@@ -66,18 +69,13 @@ class BooksUpdate extends Component{
                 <InputText 
                     type="text"
                     value={name}
-                    onChange={this.handleChangeInputName}
+                    onChange={this.handleChange}
                 />
                 <Label>Author Name:</Label>
                 <InputText 
-                    type="number"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
+                    type="text"
                     value={authorName}
-                    onChange={this.handleChangeInputAuthorName}
+                    onChange={this.handleChange}
                 />                
                 <Button onClick={this.handleIncludeBook}>Add Book</Button>
                 <CancelButton href={'/books/list'}>Cancel</CancelButton>
