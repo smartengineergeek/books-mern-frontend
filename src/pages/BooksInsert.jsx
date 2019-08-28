@@ -35,10 +35,12 @@ class BooksInsert extends Component{
         authorName: ''
     }
     handleChangeInputAuthorName = async event => {
-        this.setState({name: event.target.value});
+        console.log(event.target.value);
+        this.setState({authorName: event.target.value});
     }
     handleChangeInputName = async event => {
-        this.setState({authorName: event.target.value});
+        console.log(event.target.value);
+        this.setState({name: event.target.value});
     }
     handleIncludeBook = async event => {
         const { name, authorName } = this.state
@@ -60,12 +62,7 @@ class BooksInsert extends Component{
                 />
                 <Label>Author Name:</Label>
                 <InputText 
-                    type="number"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
+                    type="text"
                     value={authorName}
                     onChange={this.handleChangeInputAuthorName}
                 />                
