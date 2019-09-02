@@ -51,6 +51,7 @@ class BooksUpdate extends Component{
     //     this.setState({authorName: event.target.value});
     // }
     handleChange = event => {
+        console.log(event.target.name)
         this.setState({ [event.target.name]: event.target.value})
     }
     handleIncludeBook = async event => {
@@ -68,12 +69,14 @@ class BooksUpdate extends Component{
                 <Label>Name</Label>
                 <InputText 
                     type="text"
+                    name="name"
                     value={name}
                     onChange={this.handleChange}
                 />
                 <Label>Author Name:</Label>
                 <InputText 
                     type="text"
+                    name="authorName"
                     value={authorName}
                     onChange={this.handleChange}
                 />                

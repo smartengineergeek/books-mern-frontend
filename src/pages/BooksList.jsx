@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table'
 import api from '../api'
+import { css } from '@emotion/core'
+import Spinner from 'react-spinners/PacmanLoader';
 
 import 'react-table/react-table.css'
 import styled from 'styled-components'
@@ -81,22 +83,22 @@ class BooksList extends Component{
         }
        ]
        //        { Header: 'Time', accessor: 'time', Cell: () => <span>{this.props.value.join('/')}</span> }
+       console.log(this.state.isLoading)
        let showTable = true
-       if(!books.length){
-           showTable = false
-       }
-       return(
+       if(!books.length) showTable = false
+       return( 
            <Wrapper>
-               {showTable && (
-                   <ReactTable 
-                    data={books}
-                    columns={columns}
-                    loading={isLoading}
-                    defaultPageSize={10}
-                    showPageSizeOptions={true}
-                    minRows={0}
-                   />
-               )}
+               {    this.state.isLoading ? <center><Spinner size="25" margin="2px" /></center>:
+                    showTable && (
+                    <ReactTable 
+                     data={books}
+                     columns={columns}
+                     loading={isLoading}
+                     defaultPageSize={10}
+                     showPageSizeOptions={true}
+                     minRows={0}
+                    />)
+               }
            </Wrapper>
        )
    }

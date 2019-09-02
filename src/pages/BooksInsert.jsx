@@ -34,13 +34,8 @@ class BooksInsert extends Component{
         name: '',
         authorName: ''
     }
-    handleChangeInputAuthorName = async event => {
-        console.log(event.target.value);
-        this.setState({authorName: event.target.value});
-    }
-    handleChangeInputName = async event => {
-        console.log(event.target.value);
-        this.setState({name: event.target.value});
+    handleChange = event => {
+        this.setState({[event.target.name]: event.target.value});
     }
     handleIncludeBook = async event => {
         const { name, authorName } = this.state
@@ -58,13 +53,15 @@ class BooksInsert extends Component{
                 <InputText 
                     type="text"
                     value={name}
-                    onChange={this.handleChangeInputName}
+                    name="name"
+                    onChange={this.handleChange}
                 />
                 <Label>Author Name:</Label>
                 <InputText 
                     type="text"
                     value={authorName}
-                    onChange={this.handleChangeInputAuthorName}
+                    name="authorName"
+                    onChange={this.handleChange}
                 />                
                 <Button onClick={this.handleIncludeBook}>Add Book</Button>
                 <CancelButton href={'/books/list'}>Cancel</CancelButton>
